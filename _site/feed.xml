@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>leisureg的技术博客</title>
+    <description></description>
+    <link>https:///</link>
+    <atom:link href="https:///feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 20 Jul 2016 17:30:38 +0800</pubDate>
+    <lastBuildDate>Wed, 20 Jul 2016 17:30:38 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>关于memcached相关问题</title>
+        <description>
+&lt;p&gt;memcached是一个分布式高速缓存服务器。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 19 Jul 2016 00:00:00 +0800</pubDate>
+        <link>https:///2016/07/19/memcached-development/</link>
+        <guid isPermaLink="true">https:///2016/07/19/memcached-development/</guid>
+        
+        <category>memcached</category>
+        
+        
+        <category>memcached</category>
+        
+      </item>
+    
+  </channel>
+</rss>
