@@ -5,25 +5,9 @@
     <description></description>
     <link>https:///</link>
     <atom:link href="https:///feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Jul 2016 18:04:43 +0800</pubDate>
-    <lastBuildDate>Wed, 20 Jul 2016 18:04:43 +0800</lastBuildDate>
+    <pubDate>Sun, 24 Jul 2016 17:36:06 +0800</pubDate>
+    <lastBuildDate>Sun, 24 Jul 2016 17:36:06 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
-    
-      <item>
-        <title>关于memcached相关问题</title>
-        <description>
-&lt;p&gt;memcached是一个分布式高速缓存服务器。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 19 Jul 2016 00:00:00 +0800</pubDate>
-        <link>https:///2016/07/19/memcached-development/</link>
-        <guid isPermaLink="true">https:///2016/07/19/memcached-development/</guid>
-        
-        <category>memcached</category>
-        
-        
-        <category>memcached</category>
-        
-      </item>
     
   </channel>
 </rss>
