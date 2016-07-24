@@ -180,6 +180,84 @@
                 <hr>
               </li>
             
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/07/25/c-union/">c语言union</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-07-25
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#c" title="Category: c" rel="category">c</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#c,union,大端小端" title="Tag: c,union,大端小端" rel="tag">c,union,大端小端</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    
+<p>##union的使用实例
+<code class="highlighter-rouge">c
+#include &lt;stdio.h&gt;
+int main(int argc,char *argv[])
+{
+        union check
+        {
+                int i;
+                char ch;
+        }c;
+        c.i = 0x0100;
+        if (c.ch == 0x01)
+                printf("大端[%d]\n",c.ch);
+        else
+                printf("小端[%d]\n",c.ch);
+        return (0);
+}
+</code></p>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/07/25/c-union/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
         </ul>
 
 
@@ -209,6 +287,8 @@
                     
                         <li><a href="/2016/07/25/vmware-not-open/">Vmware虚拟机提示：锁定文件失败，打不开磁盘的解决方法</a></li>
                     
+                        <li><a href="/2016/07/25/c-union/">c语言union</a></li>
+                    
                 </ul>
             </div>
 
@@ -219,6 +299,15 @@
                     分类
                 </div>
                 <ul class="content-ul" cate>
+                    
+                    <li>
+                        <a href="/category/#c" class="categories-list-item" cate="c">
+                            <span class="name">
+                                c
+                            </span>
+                            <span class="badge">1</span>
+                        </a>
+                    </li>
                     
                     <li>
                         <a href="/category/#Vmware" class="categories-list-item" cate="Vmware">
@@ -245,6 +334,13 @@
 
                     
 
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#c,union,大端小端" style="font-size: 9pt; color: #999;">c,union,大端小端</a>
                     
                       
                       

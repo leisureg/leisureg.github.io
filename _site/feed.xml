@@ -5,8 +5,8 @@
     <description></description>
     <link>https:///</link>
     <atom:link href="https:///feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 01:50:42 +0800</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 01:50:42 +0800</lastBuildDate>
+    <pubDate>Mon, 25 Jul 2016 03:12:00 +0800</pubDate>
+    <lastBuildDate>Mon, 25 Jul 2016 03:12:00 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -44,6 +44,40 @@
         
         
         <category>Vmware</category>
+        
+      </item>
+    
+      <item>
+        <title>c语言union</title>
+        <description>
+&lt;p&gt;##union的使用实例
+&lt;code class=&quot;highlighter-rouge&quot;&gt;c
+#include &amp;lt;stdio.h&amp;gt;
+int main(int argc,char *argv[])
+{
+        union check
+        {
+                int i;
+                char ch;
+        }c;
+        c.i = 0x0100;
+        if (c.ch == 0x01)
+                printf(&quot;大端[%d]\n&quot;,c.ch);
+        else
+                printf(&quot;小端[%d]\n&quot;,c.ch);
+        return (0);
+}
+&lt;/code&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 25 Jul 2016 00:00:00 +0800</pubDate>
+        <link>https:///2016/07/25/c-union/</link>
+        <guid isPermaLink="true">https:///2016/07/25/c-union/</guid>
+        
+        <category>c,union,大端小端</category>
+        
+        
+        <category>c</category>
         
       </item>
     
