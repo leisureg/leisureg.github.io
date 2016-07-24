@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>centos安装tomcat</title>
+    <meta name="description" content="这篇文章将介绍安装和基本配置Tomcat 8的CentOS 5.x或CentOS 6.xTomcat8实现jsp2.2和Servlet 3.0规范和大量的新功能。访问管理器应用程序比起6x也有一个新的外观和细粒度的角色在这篇文章中,我们将安装Tomcat8,新JDK7配置Tomcat作为服务,创建一个启动/停止脚...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href=" /css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href=" /css/main.css ">
+    <link rel="canonical" href="https:///2015/09/08/centos-install-tomcat/">
+    <link rel="alternate" type="application/rss+xml" title="leisureg的技术博客" href="https:// /feed.xml ">
+
+
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">leisureg的技术博客</a>
+        <small>C Dev</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archives/">
+                        
+                            <i class="fa fa-archive"></i>归档
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>分类
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>标签
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>关于
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>centos安装tomcat</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2015-09-08
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#linux" title="Category: linux" rel="category">linux</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#centos" title="Tag: centos" rel="tag">centos</a-->
+        <a href="/tag/#centos" title="Tag: centos" rel="tag">centos</a>&nbsp;
+    
+        <!--a href="/tag/#tomcat" title="Tag: tomcat" rel="tag">tomcat</a-->
+        <a href="/tag/#tomcat" title="Tag: tomcat" rel="tag">tomcat</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        <ul id="markdown-toc">
+  <li><a href="#jdk-18" id="markdown-toc-jdk-18">第一步:安装JDK 1.8</a></li>
+  <li><a href="#tomcat8" id="markdown-toc-tomcat8">第二部：下载并解压Tomcat8</a></li>
+  <li><a href="#tomcat" id="markdown-toc-tomcat">第三步:配置Tomcat作为服务运行</a></li>
+  <li><a href="#tomcat-manager" id="markdown-toc-tomcat-manager">第四步：配置Tomcat Manager访问</a></li>
+  <li><a href="#javaopts" id="markdown-toc-javaopts">第五步(可选)：使用JAVA_OPTS管理内存配置</a></li>
+  <li><a href="#tomcat-1" id="markdown-toc-tomcat-1">第六步(可选)：如何给指定的用户使用Tomcat</a></li>
+  <li><a href="#tomcat80" id="markdown-toc-tomcat80">第七部(可选):如何将tomcat运行在80端口</a></li>
+  <li><a href="#apachetomcat" id="markdown-toc-apachetomcat">第八部(可选):运行Apache+Tomcat</a></li>
+</ul>
+
+<p>这篇文章将介绍安装和基本配置Tomcat 8的CentOS 5.x或CentOS 6.x</p>
+
+<p>Tomcat8实现jsp2.2和Servlet 3.0规范和大量的新功能。访问管理器应用程序比起6x也有一个新的外观和细粒度的角色</p>
+
+<p>在这篇文章中,我们将安装Tomcat8,新JDK7配置Tomcat作为服务,创建一个启动/停止脚本,以及(可选)配置Tomcat运行在非ROOT用户。</p>
+
+<p>我们还将配置基本访问Tomcat Manager和快速使用<code class="highlighter-rouge">JAVA_OPTS</code>看看内存管理</p>
+
+<p>最后,我们将看看在80端口上运行Tomcat以及一些策略。</p>
+
+<p>首先,我们需要安装Java开发工具包(JDK)8
+Tomcat8要求JDK版本最低为1.6。</p>
+
+<h3 id="jdk-18">第一步:安装JDK 1.8</h3>
+
+<p>你可以在这里下载最新的JDK: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></p>
+
+<p>我们将安装较新的jdk,<code class="highlighter-rouge">jdk-8u25</code></p>
+
+<p>我的操作系统是CentOS6.5_x64，这里选择是的:jdk-8u25-linux-x64.tar.gz
+如果你是32位系统，请选择jdk-8u25-linux-i586.tar.gz</p>
+
+<p>首先创建一个目录 <code class="highlighter-rouge">/usr/java</code>:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]# mkdir /usr/java  
+</code></pre>
+</div>
+
+<p>进入到<code class="highlighter-rouge">/usr/java</code></p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]# <span class="nb">cd</span> /usr/java    
+<span class="o">[</span>root@srv6 java <span class="o">]</span><span class="c">#   </span>
+</code></pre>
+</div>
+
+<p>下载合适的JDK并将其保存到<code class="highlighter-rouge">/usr/java</code>目录。</p>
+
+<p>解压<code class="highlighter-rouge">jdk-8u25-linux-x64.tar.gz</code>到<code class="highlighter-rouge">/usr/java</code>目录，使用命令tar -xzf:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 java]# tar -xzf jdk-8u25-linux-x64.tar.gz
+</code></pre>
+</div>
+
+<p>这里会创建<code class="highlighter-rouge">/usr/java/jdk1.8.0_25</code>，这个是 <code class="highlighter-rouge">JAVA_HOME</code></p>
+
+<p>我们现在可以设置JAVA_HOME并将它加入环境变量</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 java]# <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/java/jdk1.8.0_25
+<span class="o">[</span>root@srv6 java]# <span class="nb">export </span>JAVA_HOME  
+<span class="o">[</span>root@srv6 java]# <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>  
+<span class="o">[</span>root@srv6 java]# <span class="nb">export </span>PATH  
+</code></pre>
+</div>
+
+<p>将JAVA_HOME设置为永久，我们需要在<code class="highlighter-rouge">~/.bash_profile</code>添加,也可以配置<code class="highlighter-rouge">/etc/profile</code>给所有用户</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/java/jdk1.8.0_25
+<span class="nb">export </span>JAVA_HOME  
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>  
+<span class="nb">export </span>PATH  
+</code></pre>
+</div>
+
+<p>设置了<code class="highlighter-rouge">~/.bash_profile</code>后退出重新登录测试是否正确的设置了JAVA_HOME</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]#  <span class="nb">echo</span> <span class="nv">$JAVA_HOME</span>  
+/usr/java/jdk1.7.0_05  
+</code></pre>
+</div>
+
+<h3 id="tomcat8">第二部：下载并解压Tomcat8</h3>
+
+<p>将tomcat8安装在<code class="highlighter-rouge">/usr/share</code>下</p>
+
+<p>切换到<code class="highlighter-rouge">/usr/share</code>目录:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]# <span class="nb">cd</span> /usr/share  
+<span class="o">[</span>root@srv6 share <span class="o">]</span><span class="c">#   </span>
+</code></pre>
+</div>
+
+<p>下载tomcat8:http://mirror.tcpdiag.net/apache/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
+并解压到<code class="highlighter-rouge">/usr/share</code></p>
+
+<p>使用<code class="highlighter-rouge">tar -xzf</code>解压：</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 share <span class="o">]</span><span class="c"># tar -xzf apache-tomcat-8.0.23.tar.gz</span>
+</code></pre>
+</div>
+
+<p>这将创建一个目录<code class="highlighter-rouge">/usr/share/apache-tomcat-8.0.23.tar.gz</code></p>
+
+<h3 id="tomcat">第三步:配置Tomcat作为服务运行</h3>
+
+<p>现在,我们将看到如何运行Tomcat作为服务和创建一个简单的启动/停止/启动脚本,以及在引导启动Tomcat。</p>
+
+<p>切换到<code class="highlighter-rouge">/etc/init.d</code>目录创建一个tomcat的脚本：</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 share]# <span class="nb">cd</span> /etc/init.d  
+<span class="o">[</span>root@srv6 init.d]# vi tomcat  
+</code></pre>
+</div>
+
+<p>下面是我们使用的脚本：</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash  </span>
+<span class="c"># description: Tomcat Start Stop Restart  </span>
+<span class="c"># processname: tomcat  </span>
+<span class="c"># chkconfig: 234 20 80  </span>
+<span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/java/jdk1.8.0_25 
+<span class="nb">export </span>JAVA_HOME  
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>  
+<span class="nb">export </span>PATH  
+<span class="nv">CATALINA_HOME</span><span class="o">=</span>/usr/share/apache-tomcat-8.0.23
+  
+<span class="k">case</span> <span class="nv">$1</span> <span class="k">in  
+</span>start<span class="p">)</span>  
+sh <span class="nv">$CATALINA_HOME</span>/bin/startup.sh  
+<span class="p">;;</span>   
+stop<span class="p">)</span>     
+sh <span class="nv">$CATALINA_HOME</span>/bin/shutdown.sh  
+<span class="p">;;</span>   
+restart<span class="p">)</span>  
+sh <span class="nv">$CATALINA_HOME</span>/bin/shutdown.sh  
+sh <span class="nv">$CATALINA_HOME</span>/bin/startup.sh  
+<span class="p">;;</span>   
+<span class="k">esac</span>      
+<span class="nb">exit </span>0  
+</code></pre>
+</div>
+
+<p>上面的脚本非常简单，包含你需要的基本元素</p>
+
+<p>正如你看到的，我们只需要调用<code class="highlighter-rouge">startup.sh</code>和<code class="highlighter-rouge">shutdown.sh</code>，sh脚本位于tomcat的bin目录</p>
+
+<p>你可以根据需要调整脚本</p>
+
+<p>CATALINA_HOME是Tomcat的家目录(/usr/share/apache-tomcat-8.0.23)</p>
+
+<p>现在给脚本授权</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 init.d]# chmod 755 tomcat  
+</code></pre>
+</div>
+
+<p>我们使用chkconfig启动tomcat</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 init.d]# chkconfig --add tomcat  
+<span class="o">[</span>root@srv6 init.d]# chkconfig --level 234 tomcat on  
+</code></pre>
+</div>
+
+<p>验证：</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 init.d]# chkconfig --list tomcat  
+tomcat          0:off   1:off   2:on    3:on    4:on    5:off   6:off  
+</code></pre>
+</div>
+
+<p>现在我们来测试脚本！</p>
+
+<p>启动Tomcat:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]# service tomcat start  
+Using CATALINA_BASE:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_HOME:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_TMPDIR: /usr/share/apache-tomcat-8.0.23/temp  
+Using JRE_HOME:        /usr/java/jdk1.8.0_25
+Using CLASSPATH:       /usr/share/apache-tomcat-8.0.23/bin/bootstrap.jar:/usr/share/apache-tomcat-8.0.23/bin/tomcat-juli.jar
+Tomcat started.
+</code></pre>
+</div>
+
+<p>停止Tomcat:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]# service tomcat stop  
+Using CATALINA_BASE:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_HOME:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_TMPDIR: /usr/share/apache-tomcat-8.0.23/temp  
+Using JRE_HOME:        /usr/java/jdk1.8.0_25
+Using CLASSPATH:       /usr/share/apache-tomcat-8.0.23/bin/bootstrap.jar:/usr/share/apache-tomcat-8.0.23/bin/tomcat-juli.jar
+</code></pre>
+</div>
+
+<p>重启Tomcat(必须先启动):</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]# service tomcat restart  
+Using CATALINA_BASE:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_HOME:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_TMPDIR: /usr/share/apache-tomcat-8.0.23/temp  
+Using JRE_HOME:        /usr/java/jdk1.8.0_25
+Using CLASSPATH:       /usr/share/apache-tomcat-8.0.23/bin/bootstrap.jar:/usr/share/apache-tomcat-8.0.23/bin/tomcat-juli.jar  
+Using CATALINA_BASE:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_HOME:   /usr/share/apache-tomcat-8.0.23
+Using CATALINA_TMPDIR: /usr/share/apache-tomcat-8.0.23/temp  
+Using JRE_HOME:        /usr/java/jdk1.8.0_25
+Using CLASSPATH:       /usr/share/apache-tomcat-8.0.23/bin/bootstrap.jar:/usr/share/apache-tomcat-8.0.23/bin/tomcat-juli.jar
+Tomcat started.
+</code></pre>
+</div>
+
+<p>我们应该检日志查看是否有错误</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 init.d]# tail -f /usr/share/apache-tomcat-8.0.23/logs/catalina.out
+</code></pre>
+</div>
+
+<p>我们现在可以访问Tomcat Manager页面:</p>
+
+<p><code class="highlighter-rouge">http://yourdomain.com:8080</code> 或者 <code class="highlighter-rouge">http://yourIPaddress:8080</code> 可以看到tomcat主页
+<img src="https://biezhi.me/usr/uploads/2015/09/3030939225.jpg" alt="" /></p>
+
+<h3 id="tomcat-manager">第四步：配置Tomcat Manager访问</h3>
+
+<p>出于安全原因,Tomcat manager没有用户或密码，默认为创建角色。在生产环境,最好是删除管理器应用程序。</p>
+
+<p>设置角色,用户名和密码,我们需要配置tomcat/conf下面的<code class="highlighter-rouge">tomcat-user.xml</code>文件</p>
+
+<p>默认情况下将<code class="highlighter-rouge">tomcat-users.xml</code>中的元素是被注释的</p>
+
+<p>创建一个角色拥有如下权限：</p>
+
+<ul>
+  <li>manager-gui</li>
+  <li>manager-status</li>
+  <li>manager-jmx</li>
+  <li>manager-script</li>
+  <li>admin-gu</li>
+  <li>admin-script.</li>
+</ul>
+
+<p>我们可以设置<code class="highlighter-rouge">manager gui</code>的角色,例如如下</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;tomcat-users&gt;</span>  
+  <span class="nt">&lt;role</span> <span class="na">rolename=</span><span class="s">"manager-gui"</span><span class="nt">/&gt;</span>  
+  <span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">"tomcat"</span> <span class="na">password=</span><span class="s">"secret"</span> <span class="na">roles=</span><span class="s">"manager-gui"</span><span class="nt">/&gt;</span>  
+<span class="nt">&lt;/tomcat-users&gt;</span>  
+</code></pre>
+</div>
+
+<p>应该注意赋予多个角色,以免不安全。</p>
+
+<h3 id="javaopts">第五步(可选)：使用JAVA_OPTS管理内存配置</h3>
+
+<p>正确配置堆内存取决于很多因素，为简单起见，我们将堆大小设置为相同的值128MB
+添加JAVA_OPTS内存参数在我们的<code class="highlighter-rouge">Catalina.sh</code>文件。
+下面编辑<code class="highlighter-rouge">Catalina.sh</code>文件设置堆大小</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">"-Xms128m -Xmx128m"</span>
+</code></pre>
+</div>
+
+<p>我通常只是添加这个文件第二行:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh  </span>
+<span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">"-Xms128m -Xmx128m"</span>   
+<span class="c"># Licensed to the Apache Software Foundation (ASF) under one or more  </span>
+<span class="c"># contributor license agreements.  See the NOTICE file distributed with  </span>
+<span class="c"># this work for additional information regarding copyright ownership.  </span>
+<span class="c"># The ASF licenses this file to You under the Apache License, Version 2.0  </span>
+<span class="c"># (the "License"); you may not use this file except in compliance with  </span>
+<span class="c"># the License.  You may obtain a copy of the License at  </span>
+</code></pre>
+</div>
+
+<h3 id="tomcat-1">第六步(可选)：如何给指定的用户使用Tomcat</h3>
+
+<p>在上面的配置中我们使用ROOT用户运行Tomcat，处于安全原因，ROOT最好运行那些有必要的服务
+当然没有规定必须这么做，但你最好谨慎点~</p>
+
+<p>非ROOT用户运行Tomcat，需要做到以下几点：</p>
+
+<ol>
+  <li>创建tomcat组:</li>
+</ol>
+
+<p><code class="highlighter-rouge">bash
+  [root@srv6 ~]# groupadd tomcat  
+ </code></p>
+
+<ol>
+  <li>创建tomcat用户并将他加入到组</li>
+</ol>
+
+<p><code class="highlighter-rouge">bash
+  [root@srv6 ~]# useradd -s /bin/bash -g tomcat tomcat  
+ </code></p>
+
+<p>上面的写法将tomcat用户的家目录创建在<code class="highlighter-rouge">/home/tomcat</code>
+  如果你想让主目录放在其他位置，可以使用-d参数</p>
+
+<p><code class="highlighter-rouge">bash
+  [root@srv6 ~]# useradd -g tomcat -d /usr/share/apache-tomcat-8.0.23/tomcat tomcat 
+ </code></p>
+
+<p>这样可以将tomcat用户的家目录设置为<code class="highlighter-rouge">/usr/share/apache-tomcat-8.0.23/tomcat</code></p>
+
+<ol>
+  <li>将tomcat目录的所有权给tomcat用户</li>
+</ol>
+
+<p><code class="highlighter-rouge">bash
+  [root@srv6 ~]# chown -Rf tomcat.tomcat /usr/share/apache-tomcat-8.0.23/  
+ </code></p>
+
+<ol>
+  <li>调整tomcat的启动脚本，在新脚本中添加tomcat用户：</li>
+</ol>
+
+<p>```bash
+  #!/bin/bash<br />
+  # description: Tomcat Start Stop Restart<br />
+  # processname: tomcat<br />
+  # chkconfig: 234 20 80<br />
+  JAVA_HOME=/usr/java/jdk1.8.0_25<br />
+  export JAVA_HOME<br />
+  PATH=$JAVA_HOME/bin:$PATH<br />
+  export PATH<br />
+  CATALINA_HOME=/usr/share/apache-tomcat-8.0.23/bin</p>
+
+<p>case $1 in<br />
+  start)<br />
+  /bin/su tomcat $CATALINA_HOME/startup.sh<br />
+  ;; <br />
+  stop)   <br />
+  /bin/su tomcat $CATALINA_HOME/shutdown.sh<br />
+  ;; <br />
+  restart)<br />
+  /bin/su tomcat $CATALINA_HOME/shutdown.sh<br />
+  /bin/su tomcat $CATALINA_HOME/startup.sh<br />
+  ;; <br />
+  esac    <br />
+  exit 0
+  ```</p>
+
+<h3 id="tomcat80">第七部(可选):如何将tomcat运行在80端口</h3>
+
+<p>运行下面的服务端口1024是给root以外的用户,你可以添加到你的ipables:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>root@srv6 ~]# iptables -t nat -A PREROUTING -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 8080    
+<span class="o">[</span>root@srv6 ~]# iptables -t nat -A PREROUTING -p udp -m udp --dport 80 -j REDIRECT --to-ports 8080    
+</code></pre>
+</div>
+
+<p>重启iptables</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>service iptables restart
+</code></pre>
+</div>
+
+<h3 id="apachetomcat">第八部(可选):运行Apache+Tomcat</h3>
+
+<p>在80端口上运行Tomcat,如果你有前面的Apache Tomcat,您可以使用使用Apache Tomcat的mod_proxy以及apj connector映射到vhost</p>
+
+<p>当Tomcat是独立性能的改善,我仍然喜欢它前面的空间的原因。</p>
+
+<p>在您的Apache配置,确保KeepAlive设置是<code class="highlighter-rouge">on</code>。 Apache调优,当然,本身是一个很大的话题……</p>
+
+<p><em>实例1: VHOST with mod_proxy:</em></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>  
+    ServerAdmin admin@yourdomain.com  
+    ServerName yourdomain.com  
+    ServerAlias www.yourdomain.com  
+  
+  
+    ProxyRequests Off  
+    ProxyPreserveHost On  
+    <span class="nt">&lt;Proxy</span> <span class="err">*</span><span class="nt">&gt;</span>  
+       Order allow,deny  
+       Allow from all  
+    <span class="nt">&lt;/Proxy&gt;</span>  
+  
+  
+    ProxyPass / http://localhost:8080/  
+    ProxyPassReverse / http://localhost:8080/  
+  
+  
+    ErrorLog logs/yourdomain.com-error_log  
+    CustomLog logs/yourdomain.com-access_log common  
+  
+<span class="nt">&lt;/VirtualHost&gt;</span>  
+</code></pre>
+</div>
+
+<p><em>实例 2: VHOST with ajp connector and mod_proxy:</em></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>  
+    ServerAdmin admin@yourdomain.com  
+    ServerName yourdomain.com  
+    ServerAlias www.yourdomain.com  
+  
+  
+    ProxyRequests Off  
+    ProxyPreserveHost On  
+    <span class="nt">&lt;Proxy</span> <span class="err">*</span><span class="nt">&gt;</span>  
+    Order allow,deny  
+    Allow from all  
+    <span class="nt">&lt;/Proxy&gt;</span>  
+  
+    ProxyPass / ajp://localhost:8009/  
+    ProxyPassReverse / ajp://localhost:8009/  
+  
+  
+    ErrorLog logs/yourdomain.com-error_log  
+    CustomLog logs/yourdomain.com-access_log common  
+<span class="nt">&lt;/VirtualHost&gt;</span>  
+</code></pre>
+</div>
+
+<p>vhost在这两个例子,我们”映射”到Tomcat的根目录。</p>
+
+<p>如果我们希望映射到应用程序如<code class="highlighter-rouge">yourdomain.com/myapp</code>,我们可以添加一些改写如下所示。</p>
+
+<p>这将重写所有请求 <code class="highlighter-rouge">yourdomain.com</code> <code class="highlighter-rouge">yourdomain.com/myapp</code></p>
+
+<p><em>实例 3: VHOST with rewrite:</em></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>  
+    ServerAdmin admin@yourdomain.com  
+    ServerName yourdomain.com  
+    ServerAlias www.yourdomain.com  
+  
+  
+    RewriteEngine On  
+    RewriteRule ^/$ myapp/ [R=301]  
+  
+    ProxyRequests Off  
+    ProxyPreserveHost On  
+    <span class="nt">&lt;Proxy</span> <span class="err">*</span><span class="nt">&gt;</span>  
+    Order allow,deny  
+    Allow from all  
+    <span class="nt">&lt;/Proxy&gt;</span>  
+  
+    ProxyPass / ajp://localhost:8009/  
+    ProxyPassReverse / ajp://localhost:8009/  
+  
+  
+    ErrorLog logs/yourdomain.com-error_log  
+    CustomLog logs/yourdomain.com-access_log common  
+<span class="nt">&lt;/VirtualHost&gt;</span>  
+</code></pre>
+</div>
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                        
+                        <h2 id="similar_posts">Similar Posts</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="https:///2015/09/09/centos-install-tomcat/">centos安装tomcat
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+                    
+                
+            
+                
+                    
+                
+                    
+                
+            
+        
+        
+            </ul>
+        
+
+        <div class="post-recent">
+    
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2015/09/09/centos-install-tomcat/">centos安装tomcat</a></p>
+        
+    </div>
+</div>
+
+        <p>&nbsp;</p>
+        
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    文章主体
+                </div>
+                <ul id="content-side" class="content-ul">
+                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             本站记录着后端的一些事儿！ 
+        </p>
+        <p class="contact">
+            
+            <a href="https://github.com/leisureg" title="GitHub" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
+            
+            <a href="http://weibo.com/leisureg" title="Weibo" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a>  
+            <a href="https://www.zhihu.com/people/leisureg" title="Zhihu" target="_blank"><i class="iconfont">&#xe829;</i></a>  
+            <a href="https://twitter.com/leisureg" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>     
+            
+            <a href="mailto:leisuregqt@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> 
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                Theme designed by <a href="https://github.com/Gaohaoyang" target="_blank">HyG</a>.
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>

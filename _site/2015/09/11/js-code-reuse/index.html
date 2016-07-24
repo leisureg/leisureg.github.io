@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>JS代码复用</title>
+    <meta name="description" content="js 中复用代码说道代码复用，一般都会涉及到对象继承。在js中有许多可以选择的继承方法。这些方法对于学习和理解多种不同的模式有很大的好处，因为它们有助于提供对语言的掌握程度。但是在开发的过程中，并不是所有的代码复用都会使用到继承。其中一部原因在于，事实上使用的js库可能以这样的或那样的方式解决了该问题。而另一方面...">
+
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?" type="image/x-icon">
+    <link rel="stylesheet" href=" /css/fontawesome/css/font-awesome.min.css ">
+    <link rel="stylesheet" href=" /css/main.css ">
+    <link rel="canonical" href="https:///2015/09/11/js-code-reuse/">
+    <link rel="alternate" type="application/rss+xml" title="leisureg的技术博客" href="https:// /feed.xml ">
+
+
+
+</head>
+
+
+  <body>
+
+    <header id="top">
+    <div class="wrapper">
+        <a href="/" class="brand">leisureg的技术博客</a>
+        <small>C Dev</small>
+        <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button>
+        <nav id="headerNav">
+            <ul>
+                <li>
+                    
+                    <a href="/">
+                    
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+
+                
+                    
+                    <li>
+                        
+                        <a href="/archives/">
+                        
+                            <i class="fa fa-archive"></i>归档
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/category/">
+                        
+                            <i class="fa fa-th-list"></i>分类
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/tag/">
+                        
+                            <i class="fa fa-tags"></i>标签
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        
+                        <a href="/about/">
+                        
+                            <i class="fa fa-heart"></i>关于
+                        </a>
+                    </li>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="page clearfix" post>
+    <div class="left">
+        <h1>JS代码复用</h1>
+        <div class="label">
+
+            <div class="label-card">
+                <i class="fa fa-calendar"></i>2015-09-11
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+                
+            </div>
+
+            <div class="label-card">
+            
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#web" title="Category: web" rel="category">web</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+            </div>
+
+            <div class="label-card">
+            
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <!--a href="/tag/#javascript" title="Tag: javascript" rel="tag">javascript</a-->
+        <a href="/tag/#javascript" title="Tag: javascript" rel="tag">javascript</a>
+    
+  
+
+</span>
+
+            </div>
+
+        </div>
+        <hr>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+        
+<p><strong>js 中复用代码</strong></p>
+
+<p>说道代码复用，一般都会涉及到对象继承。在js中有许多可以选择的继承方法。这些方法对于学习和理解多种不同的模式有很大的好处，因为它们有助于提供对语言的掌握程度。</p>
+
+<p>但是在开发的过程中，并不是所有的代码复用都会使用到继承。其中一部原因在于，事实上使用的js库可能以这样的或那样的方式解决了该问题。而另一方面的原因就在于很少需要在js中建立长而且复杂的继承链。在静态强类型语言中，继承可以能是唯一复用代码的方法。在js中，经常有更加简洁而且优美的方法。包括：借用方法、绑定、复制属性以及从多个对象中混入属性等许多方法。</p>
+
+<p><strong>混入</strong></p>
+
+<p>混入是针对通过属性复制实现继承的思想做进一步的扩展，mix-in模式并不是复制一个完整的对象，而是从多个对象中复制出任意的成员并将这些成员组合成新的对象。</p>
+
+<p>实现mix-in：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">mix</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">arg</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">child</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">arg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">arg</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">arg</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nx">prop</span> <span class="k">in</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">arg</span><span class="p">])</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="nx">arg</span><span class="p">].</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">prop</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nx">child</span><span class="p">[</span><span class="nx">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arguemnts</span><span class="p">[</span><span class="nx">arg</span><span class="p">][</span><span class="nx">prop</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">child</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>mix-in实现非常简单，只需要遍历每个参数，并且复制出传递给该函数的每个对象中的每个属性。</p>
+
+<p><strong>借用方法</strong></p>
+
+<p>有的时候，我们只需要对象中的一两个方法，但是又不想和对象形成父-子继承关系。只是想是用所需要的方法，而不希望继承所有那些永远用不到的属性和方法。在这种情况下，可以通过使用借用方法模式来实现。</p>
+
+<p>而这个方法是受益于call()和apply()的。js中函数也是对象，并且它们自身也存在一些属性和方法，比如call和apply()。</p>
+
+<p>使用call()和apply()分别借用方法：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// call</span>
+<span class="nx">notmyobj</span><span class="p">.</span><span class="nx">doStuff</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">myobj</span><span class="p">,</span> <span class="nx">param1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">,</span> <span class="nx">p3</span><span class="p">);</span>
+
+<span class="c1">// apply</span>
+<span class="nx">notmyobj</span><span class="p">.</span><span class="nx">doStuff</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">myobj</span><span class="p">,</span> <span class="p">[</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">,</span> <span class="nx">p3</span><span class="p">]);</span>
+</code></pre>
+</div>
+<p>在知道notmyobj对象上有doStuff方法的情况下，又想不继承notmyobj来使用doStuff方法。这个使用call()和apply()就派上用场了。</p>
+
+<p>还有一个场景是经常使用到借用方法的。那就是借用数组方法。因为数据具有许多很强大的方法，而且有时候需要操作arguments的时候会用上。但是arguments是一个伪数组，不具有原生数组强大的方法。这个使用借用方法就派上用场了：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">f</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguemnts</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">args</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>借用和绑定</strong></p>
+
+<p>考虑到借用方法不是通过调用call和apply()就是通过简单的复制，在借用方法的内部，this所指向的对象是基于调用表达式而确定的，但是有的时候“锁定”this的值，或者将其绑定到特定的对象并且预先确定该对象。</p>
+
+<p><strong>举一栗子：</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">one</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'object'</span><span class="p">,</span>
+    <span class="na">say</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">greet</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">greet</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>// 测试</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">one</span><span class="p">.</span><span class="nx">say</span><span class="p">(</span><span class="s1">'hi'</span><span class="p">);</span> <span class="c1">// hi, object</span>
+</code></pre>
+</div>
+
+<p>接着另一对象two中没有say()方法，借用one的say()方法：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">two</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'another object'</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>// 测试
+one.say.call(two, ‘hi’); // hi, another object
+在上面的例子中，借用的say()方法的this是指向two的。但是在什么样的场景中，应该将函数指针赋值给一个全局变量，或者将该函数做为回调函数来传递？在客户端编程中有许多事件和回调，因此确实发生了许多这样混淆的事件。</p>
+
+<p>举一个栗子：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// 给变量赋值</span>
+<span class="c1">// this 将指向全局变量</span>
+<span class="kd">var</span> <span class="nx">say</span> <span class="o">=</span> <span class="nx">one</span><span class="p">.</span><span class="nx">say</span><span class="p">;</span>
+<span class="nx">say</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span> <span class="c1">// hello, undefined</span>
+
+<span class="c1">// 作为回调传递</span>
+<span class="kd">var</span> <span class="nx">yetanother</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'yet another object'</span><span class="p">,</span>
+    <span class="na">method</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">callback</span><span class="p">(</span><span class="s1">'hola'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>// 测试</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">yetanother</span><span class="p">.</span><span class="nx">method</span><span class="p">(</span><span class="nx">one</span><span class="p">.</span><span class="nx">say</span><span class="p">)</span> <span class="c1">// holla, undefined</span>
+</code></pre>
+</div>
+
+<p>在上面的两种情况下，say()方法的this值都是指向全局对象。而且整个代码都无法按照预期来运行。为了修复（绑定）对象与方法之间的关系。可以使用一个简单的函数来实现：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">bind</span><span class="p">(</span><span class="nx">o</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">o</span><span class="p">,</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>上面的bind()方法接受两个参数。一个是对象o，另一个是方法m，并将两者绑定起来。然后返回一个函数。</p>
+
+<p>使用bind()来解决问题：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">twosay</span> <span class="o">=</span> <span class="nx">bind</span><span class="p">(</span><span class="nx">two</span><span class="p">,</span> <span class="nx">one</span><span class="p">.</span><span class="nx">say</span><span class="p">);</span>
+<span class="nx">twosay</span><span class="p">(</span><span class="s1">'yo'</span><span class="p">);</span> <span class="c1">// yo another object</span>
+</code></pre>
+</div>
+
+<p>奢侈的拥有绑定所需要辅助的代价就是额外的闭包的开销。
+ES5 bind()</p>
+
+<p>在ECMAScript5中给Function.protoype添加了一个bind()方法，使得bind()与call()、apply()一样简单易用。</p>
+
+<p>但是在不支持ECMAScript5的运行环境下，我们可以自己实现一个bind()方法（来自 MDN）：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bind</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bind</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">oThis</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="k">this</span> <span class="o">!==</span> <span class="s2">"function"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// closest thing possible to the ECMAScript 5 internal IsCallable function</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nx">TypeError</span><span class="p">(</span><span class="s2">"Function.prototype.bind - what is trying to be bound is not callable"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">aArgs</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+        <span class="nx">fToBind</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> 
+        <span class="nx">fNOP</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{},</span>
+        <span class="nx">fBound</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">fToBind</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">fNOP</span> <span class="o">&amp;&amp;</span> <span class="nx">oThis</span>
+                                 <span class="p">?</span> <span class="k">this</span>
+                                 <span class="p">:</span> <span class="nx">oThis</span> <span class="o">||</span> <span class="nb">window</span><span class="p">,</span>
+                               <span class="nx">aArgs</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)));</span>
+        <span class="p">};</span>
+
+    <span class="nx">fNOP</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+    <span class="nx">fBound</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">fNOP</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="nx">fBound</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>然后使用自带的bind()方法来重写一下上面的栗子：</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">twosay</span> <span class="o">=</span> <span class="nx">bind</span><span class="p">(</span><span class="nx">two</span><span class="p">,</span> <span class="nx">one</span><span class="p">.</span><span class="nx">say</span><span class="p">);</span>
+<span class="nx">twosay</span><span class="p">(</span><span class="s1">'Bonjour'</span><span class="p">);</span> <span class="c1">// yo another object</span>
+</code></pre>
+</div>
+
+        </article>
+        <hr>
+
+        
+        
+            
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                
+                    
+                
+            
+                
+                    
+                
+            
+        
+        
+
+        <div class="post-recent">
+    
+    <div class="pre">
+
+        <p><strong>上一篇</strong> <a href="/2015/09/08/centos-install-tomcat/">centos安装tomcat</a></p>
+        
+    </div>
+    <div class="nex">
+
+        
+        <p><strong>下一篇</strong> <a href="/2016/03/09/four-ways-to-make-map-thread-safe/">四种方法使Map线程安全</a></p>
+        
+    </div>
+</div>
+
+        <p>&nbsp;</p>
+        
+
+
+
+    </div>
+    <button class="anchor"><i class="fa fa-anchor"></i></button>
+    <div class="right">
+        <div class="wrap">
+
+            <!-- Content -->
+            <div class="side content">
+                <div>
+                    文章主体
+                </div>
+                <ul id="content-side" class="content-ul">
+                    
+                </ul>
+            </div>
+            <!-- 其他div框放到这里 -->
+            <!-- <div class="side">bbbb</div> -->
+        </div>
+    </div>
+</div>
+<script>
+/**
+ * target _blank
+ */
+(function() {
+    var aTags = document.querySelectorAll('article a:not([id])')
+    for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute('target', '_blank')
+    }
+}());
+</script>
+<script src="/js/pageContent.js " charset="utf-8"></script>
+
+
+    <footer class="site-footer">
+
+
+    <div class="wrapper">
+
+        <p class="description">
+             本站记录着后端的一些事儿！ 
+        </p>
+        <p class="contact">
+            
+            <a href="https://github.com/leisureg" title="GitHub" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a> 
+            
+            <a href="http://weibo.com/leisureg" title="Weibo" target="_blank"><i class="fa fa-weibo" aria-hidden="true"></i></a>  
+            <a href="https://www.zhihu.com/people/leisureg" title="Zhihu" target="_blank"><i class="iconfont">&#xe829;</i></a>  
+            <a href="https://twitter.com/leisureg" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>     
+            
+            <a href="mailto:leisuregqt@gmail.com" title="email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a> 
+        </p>
+        <p>
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次，本站访客数<span id="busuanzi_value_site_uv"></span>人次，本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        </p>
+        <p class="power">
+            <span>
+                Site powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://pages.github.com/">Github Pages</a>.
+            </span>
+            <span>
+                Theme designed by <a href="https://github.com/Gaohaoyang" target="_blank">HyG</a>.
+            </span>
+        </p>
+    </div>
+</footer>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <div class="back-to-top">
+    <a href="#top" class="scroll">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </a>
+</div>
+
+    <script src=" /js/main.js " charset="utf-8"></script>
+    <script src=" /js/scroll.min.js " charset="utf-8"></script>
+  </body>
+
+</html>
