@@ -5,9 +5,47 @@
     <description></description>
     <link>https:///</link>
     <atom:link href="https:///feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 24 Jul 2016 17:51:44 +0800</pubDate>
-    <lastBuildDate>Sun, 24 Jul 2016 17:51:44 +0800</lastBuildDate>
+    <pubDate>Mon, 25 Jul 2016 01:50:42 +0800</pubDate>
+    <lastBuildDate>Mon, 25 Jul 2016 01:50:42 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Vmware虚拟机提示：锁定文件失败，打不开磁盘的解决方法</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;出现问题原因分析：&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;解决方法：&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;出现问题原因分析：&lt;/h2&gt;
+
+&lt;p&gt;​	如果是使用的&lt;code class=&quot;highlighter-rouge&quot;&gt;VMWare&lt;/code&gt;虚拟机的时候，突然电脑蓝屏，有一定几率导致下次启动虚拟机的时候，出现这种情况。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;锁定文件失败
+
+打不开磁盘“D:\...\*.vmdk&quot;或它所依赖的某个快照磁盘。
+
+开启模块DiskEarly的操作失败。
+
+未能启动虚拟机。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;解决方法：&lt;/h2&gt;
+
+&lt;p&gt;​	打开的你的虚拟机系统硬盘所在位置的文件夹，创建虚拟系统时所选的位置，然后删除这类文件夹：&lt;code class=&quot;highlighter-rouge&quot;&gt;*.lck&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;​	删除后就不再出现此错误。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 25 Jul 2016 00:00:00 +0800</pubDate>
+        <link>https:///2016/07/25/vmware-not-open/</link>
+        <guid isPermaLink="true">https:///2016/07/25/vmware-not-open/</guid>
+        
+        <category>Vmware</category>
+        
+        
+        <category>Vmware</category>
+        
+      </item>
     
   </channel>
 </rss>
