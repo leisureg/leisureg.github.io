@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>c语言union</title>
-    <meta name="description" content="##union的使用实例c#include &lt;stdio.h&gt;int main(int argc,char *argv[]){        union check        {                int i;                char ch;        }c;   ...">
+    <meta name="description" content="##union的使用实例#include &lt;stdio.h&gt;int main(int argc,char *argv[]){        union check        {                int i;                char ch;        }c;    ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
@@ -147,25 +147,25 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         
-<p>##union的使用实例
-<code class="highlighter-rouge">c
-#include &lt;stdio.h&gt;
-int main(int argc,char *argv[])
-{
-        union check
-        {
-                int i;
-                char ch;
-        }c;
-        c.i = 0x0100;
-        if (c.ch == 0x01)
-                printf("大端[%d]\n",c.ch);
-        else
-                printf("小端[%d]\n",c.ch);
-        return (0);
-}
-</code></p>
+<p>##union的使用实例</p>
 
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+        <span class="k">union</span> <span class="n">check</span>
+        <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+                <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+        <span class="p">}</span><span class="n">c</span><span class="p">;</span>
+        <span class="n">c</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="mh">0x0100</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span> <span class="o">==</span> <span class="mh">0x01</span><span class="p">)</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"大端[%d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span><span class="p">);</span>
+        <span class="k">else</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"小端[%d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
 
         </article>
         <hr>
