@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>c语言union</title>
-    <meta name="description" content="  union的使用实例union的使用实例#include &lt;stdio.h&gt;int main(int argc,char *argv[]){        union check        {                int i;                char ch;     ...">
+    <title>str集</title>
+    <meta name="description" content="  str集str集  1.去除空格。  原型：str.strip()  功能：去除字符串前后的空格。&gt;&gt;&gt; test=' hello,world '&gt;&gt;&gt; test' hello,world '&gt;&gt;&gt; test=test.strip()&gt;&gt;&gt...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href=" /css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href=" /css/main.css ">
-    <link rel="canonical" href="https:///2016/07/25/c-union/">
+    <link rel="canonical" href="https:///2016/07/29/python-str/">
     <link rel="alternate" type="application/rss+xml" title="leisureg的技术博客" href="https:// /feed.xml ">
 
 
@@ -93,11 +93,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>c语言union</h1>
+        <h1>str集</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-07-25
+                <i class="fa fa-calendar"></i>2016-07-29
             </div>
 
             <div class="label-card">
@@ -117,7 +117,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#c" title="Category: c" rel="category">c</a>
+        <a href="/category/#python" title="Category: python" rel="category">python</a>
     
   
 
@@ -134,8 +134,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#c%2Cunion%2C%E5%A4%A7%E7%AB%AF%E5%B0%8F%E7%AB%AF" title="Tag: c,union,大端小端" rel="tag">c,union,大端小端</a-->
-        <a href="/tag/#c,union,大端小端" title="Tag: c,union,大端小端" rel="tag">c,union,大端小端</a>
+        <!--a href="/tag/#str" title="Tag: str" rel="tag">str</a-->
+        <a href="/tag/#str" title="Tag: str" rel="tag">str</a>
     
   
 
@@ -147,28 +147,79 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#union" id="markdown-toc-union">union的使用实例</a></li>
+  <li><a href="#str" id="markdown-toc-str">str集</a></li>
 </ul>
 
-<h2 id="union">union的使用实例</h2>
+<h1 id="str">str集</h1>
 
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-        <span class="k">union</span> <span class="n">check</span>
-        <span class="p">{</span>
-                <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-                <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
-        <span class="p">}</span><span class="n">c</span><span class="p">;</span>
-        <span class="n">c</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="mh">0x0100</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span> <span class="o">==</span> <span class="mh">0x01</span><span class="p">)</span>
-                <span class="n">printf</span><span class="p">(</span><span class="s">"大端[%d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span><span class="p">);</span>
-        <span class="k">else</span>
-                <span class="n">printf</span><span class="p">(</span><span class="s">"小端[%d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span><span class="p">);</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span>
+<blockquote>
+  <p><strong>1.去除空格。</strong></p>
+
+  <p><code class="highlighter-rouge">原型：str.strip()</code></p>
+
+  <p>功能：去除字符串<strong>前后</strong>的空格。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="o">=</span><span class="s">' hello,world '</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span>
+<span class="s">' hello,world '</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span>
+<span class="s">'hello,world'</span>
 </code></pre>
 </div>
+
+<blockquote>
+  <p><strong>2.获取字符串长度。</strong></p>
+
+  <p><code class="highlighter-rouge">原型：len(str)</code></p>
+
+  <p>功能：根据字符串内容获取长度。</p>
+
+  <p><em>注意：这里len(object)，<code class="highlighter-rouge">object</code>也可以是<code class="highlighter-rouge">list对象</code>，这时代表list的对象个数</em></p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="o">=</span><span class="s">'leisureg'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">num</span>
+<span class="mi">8</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>3.输出指定字符串</p>
+
+  <p><code class="highlighter-rouge">原型：str[n:m]</code>=str[n],str[n+1],…,str[m-1]</p>
+
+  <p>功能：从一个字符串中，输出指定的字符串或字符。</p>
+
+  <p>n与m，分别代表字符串的下标，数组默认从0开始，所以最大长到m-1个字符。</p>
+
+  <p>n不存在时，代表从0开始，也就是从字符起始位置开始，</p>
+
+  <p>m不存在时，代表输出到字符结束。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 字符串原型</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span>
+<span class="s">'leisureg'</span>
+
+<span class="c"># 输出从开始到i的字符串</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="s">'lei'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="s">'lei'</span>
+
+<span class="c"># 输出e到s的字符串</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="s">'eis'</span>
+
+<span class="c"># 输出s到结尾的字符串</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="s">'sureg'</span>
+</code></pre>
+</div>
+
 
         </article>
         <hr>
@@ -188,6 +239,22 @@
                     
                 
             
+                
+                    
+                        
+                        <h2 id="similar_posts">Similar Posts</h2>
+                        <ul>
+                        
+                        <li class="relatedPost">
+                            <a href="https:///2016/07/27/python-list-str/">list与str
+                            
+                            </a>
+                        </li>
+                        
+                        
+                    
+                
+            
         
             
             
@@ -195,10 +262,6 @@
                     
                 
             
-                
-                    
-                
-            
         
             
             
@@ -207,15 +270,19 @@
                 
             
         
+        
+            </ul>
         
 
         <div class="post-recent">
     
+    <div class="pre">
+
+        <p><strong>上一篇</strong> <a href="/2016/07/29/python-for/">for循环的使用</a></p>
+        
     </div>
     <div class="nex">
 
-        
-        <p><strong>下一篇</strong> <a href="/2016/07/25/vmware-not-open/">Vmware虚拟机提示：锁定文件失败，打不开磁盘的解决方法</a></p>
         
     </div>
 </div>

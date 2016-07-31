@@ -100,6 +100,473 @@
             
               <li>
                 <h2>
+                  <a class="post-link" href="/2016/07/29/python-str/">str集</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-07-29
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#python" title="Category: python" rel="category">python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#str" title="Tag: str" rel="tag">str</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#str" id="markdown-toc-str">str集</a></li>
+</ul>
+
+<h1 id="str">str集</h1>
+
+<blockquote>
+  <p><strong>1.去除空格。</strong></p>
+
+  <p><code class="highlighter-rouge">原型：str.strip()</code></p>
+
+  <p>功能：去除字符串<strong>前后</strong>的空格。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="o">=</span><span class="s">' hello,world '</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span>
+<span class="s">' hello,world '</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span>
+<span class="s">'hello,world'</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>2.获取字符串长度。</strong></p>
+
+  <p><code class="highlighter-rouge">原型：len(str)</code></p>
+
+  <p>功能：根据字符串内容获取长度。</p>
+
+  <p><em>注意：这里len(object)，<code class="highlighter-rouge">object</code>也可以是<code class="highlighter-rouge">list对象</code>，这时代表list的对象个数</em></p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="o">=</span><span class="s">'leisureg'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">num</span>
+<span class="mi">8</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>3.输出指定字符串</p>
+
+  <p><code class="highlighter-rouge">原型：str[n:m]</code>=str[n],str[n+1],…,str[m-1]</p>
+
+  <p>功能：从一个字符串中，输出指定的字符串或字符。</p>
+
+  <p>n与m，分别代表字符串的下标，数组默认从0开始，所以最大长到m-1个字符。</p>
+
+  <p>n不存在时，代表从0开始，也就是从字符起始位置开始，</p>
+
+  <p>m不存在时，代表输出到字符结束。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 字符串原型</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span>
+<span class="s">'leisureg'</span>
+
+<span class="c"># 输出从开始到i的字符串</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="s">'lei'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="s">'lei'</span>
+
+<span class="c"># 输出e到s的字符串</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="s">'eis'</span>
+
+<span class="c"># 输出s到结尾的字符串</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">test</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+<span class="s">'sureg'</span>
+</code></pre>
+</div>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/07/29/python-str/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/07/29/python-for/">for循环的使用</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-07-29
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#python" title="Category: python" rel="category">python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#for" title="Tag: for" rel="tag">for</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#for" id="markdown-toc-for">for循环的使用</a></li>
+  <li><a href="#range" id="markdown-toc-range">range用法</a></li>
+</ul>
+
+<h2 id="for">for循环的使用</h2>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="o">=</span><span class="s">"hello"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span>
+<span class="o">...</span>
+<span class="n">h</span>
+<span class="n">e</span>
+<span class="n">l</span>
+<span class="n">l</span>
+<span class="n">o</span>
+<span class="c"># 如果要打印为一行，加个","(英文逗号)即可</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+<span class="o">...</span>
+<span class="n">h</span> <span class="n">e</span> <span class="n">l</span> <span class="n">l</span> <span class="n">o</span>
+
+<span class="c"># 如果要使用","号分割，可以使用"+"来实现</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="s">","</span><span class="p">,</span>
+<span class="o">...</span>
+<span class="n">h</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span>
+<span class="o">&gt;&gt;&gt;</span>
+
+<span class="c"># 通过下标来循环打印，range是用来设置下标序号的。这里"0-4"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+<span class="o">...</span>
+<span class="n">h</span> <span class="n">e</span> <span class="n">l</span> <span class="n">l</span> <span class="n">o</span>
+</code></pre>
+</div>
+
+<h2 id="range">range用法</h2>
+
+<blockquote>
+  <p><strong>原型：</strong>range(start,stop,step)，其中<strong>start</strong>和<strong>step</strong>是可以省略的，开始值默认为0。</p>
+
+  <p><strong>start：不存在时，默认为0。所以，range(i,j,1) = range(i,j)</strong></p>
+
+  <p><strong>step：不存在时，默认为1，并且</strong>必须<strong>大于0</strong></p>
+</blockquote>
+
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/07/29/python-for/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
+                  <a class="post-link" href="/2016/07/27/python-list-str/">list与str</a>
+                </h2>
+                <div class="label">
+                    <div class="label-card">
+                        <i class="fa fa-calendar"></i>2016-07-27
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+                    <div class="label-card">
+                        
+                    </div>
+
+                    <div class="label-card">
+                    
+
+
+<!-- <span class="point">•</span> -->
+<span class="categories">
+  <i class="fa fa-th-list"></i>
+  
+    
+        <a href="/category/#python" title="Category: python" rel="category">python</a>
+    
+  
+
+  <!-- <span class="point">•</span> -->
+</span>
+
+
+                    </div>
+
+                    <div class="label-card">
+                    
+<!-- <span class="point">•</span> -->
+<span class="pageTag">
+  <i class="fa fa-tags"></i>
+  
+    
+        <a href="/tag/#list" title="Tag: list" rel="tag">list</a>&nbsp;
+    
+        <a href="/tag/#str" title="Tag: str" rel="tag">str</a>
+    
+  
+
+</span>
+
+                    </div>
+                </div>
+                <div class="excerpt">
+                    <ul id="markdown-toc">
+  <li><a href="#liststr" id="markdown-toc-liststr">list与str的区别</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">相同点</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">不同点</a></li>
+      <li><a href="#list" id="markdown-toc-list">list多维使用</a></li>
+      <li><a href="#liststr-1" id="markdown-toc-liststr-1">list和str转化</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="liststr">list与str的区别</h1>
+
+<h2 id="section">相同点</h2>
+
+<p>1.都可以通过下标获取指定数据。</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">=</span><span class="s">"test"</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s">'t'</span>
+
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">=</span><span class="p">[</span><span class="s">'test'</span><span class="p">,</span><span class="s">'test2'</span><span class="p">,</span><span class="s">'test3'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s">'test'</span>
+</code></pre>
+</div>
+
+<p>​</p>
+
+<p>2.都具有用<code class="highlighter-rouge">str1+str2</code>来连接两个同类型的变量。</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">=</span><span class="s">"test"</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">second</span><span class="o">=</span><span class="s">"test2"</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">+</span><span class="n">second</span>
+<span class="s">'testtest2'</span>
+
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">=</span><span class="p">[</span><span class="s">'1'</span><span class="p">,</span><span class="s">'2'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">second</span><span class="o">=</span><span class="p">[</span><span class="s">'3'</span><span class="p">,</span><span class="s">'4'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">+</span><span class="n">second</span>
+<span class="p">[</span><span class="s">'1'</span><span class="p">,</span><span class="s">'2'</span><span class="p">,</span><span class="s">'3'</span><span class="p">,</span><span class="s">'4'</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p>​</p>
+
+<p>3.<code class="highlighter-rouge">value[:n]</code>通过这种方式获取指定数据,偏移量从<code class="highlighter-rouge">0</code>开始，到总元数<code class="highlighter-rouge">n-1</code>结束。</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">=</span><span class="p">[</span><span class="s">'test'</span><span class="p">,</span><span class="s">'test2'</span><span class="p">,</span><span class="s">'test3'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="s">'test'</span><span class="p">,</span><span class="s">'test2'</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span><span class="n">second</span><span class="o">=</span><span class="s">"test23"</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">second</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="s">'te'</span>
+</code></pre>
+</div>
+
+<p>4.<code class="highlighter-rouge">len</code>获取元素数或字符串数</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">=</span><span class="p">[</span><span class="s">'1'</span><span class="p">,</span><span class="s">'2'</span><span class="p">,</span><span class="s">'3'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+<span class="mi">3</span>
+
+<span class="o">&gt;&gt;&gt;</span><span class="n">first</span><span class="o">=</span><span class="s">"1234567"</span>
+<span class="o">&gt;&gt;&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+<span class="mi">7</span>
+</code></pre>
+</div>
+
+<h2 id="section-1">不同点</h2>
+
+<blockquote>
+  <p>list与str最大的区别就是：list是可以改变的，str是不可变。</p>
+
+  <p>如果要修改str中的元素，可以创建一个新的str，来实现他的改变。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">first</span><span class="o">=</span><span class="p">[</span><span class="s">'1'</span><span class="p">,</span><span class="s">'2'</span><span class="p">,</span><span class="s">'3'</span><span class="p">,</span><span class="s">'4'</span><span class="p">]</span>
+
+<span class="c"># 追加元素</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'5'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span>
+<span class="p">[</span><span class="s">'1'</span><span class="p">,</span> <span class="s">'2'</span><span class="p">,</span> <span class="s">'3'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'5'</span><span class="p">]</span>
+
+<span class="c"># 修改元素</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s">'1'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="s">'test'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s">'test'</span>
+
+<span class="c"># 插入元素</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s">"hello"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span>
+<span class="p">[</span><span class="s">'test'</span><span class="p">,</span> <span class="s">'hello'</span><span class="p">,</span> <span class="s">'2'</span><span class="p">,</span> <span class="s">'3'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'5'</span><span class="p">]</span>
+
+<span class="c"># 删除元素</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">first</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">first</span>
+<span class="p">[</span><span class="s">'test'</span><span class="p">,</span> <span class="s">'2'</span><span class="p">,</span> <span class="s">'3'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'5'</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<p><strong>以上这些操作在<code class="highlighter-rouge">str</code>中都会失败。</strong></p>
+
+<h2 id="list">list多维使用</h2>
+
+<blockquote>
+  <p>list中的元素可以是任何类型的数据：</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">matrix</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">],</span><span class="s">'d'</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">matrix</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">],</span> <span class="s">'d'</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="s">'d'</span>
+</code></pre>
+</div>
+
+<h2 id="liststr-1">list和str转化</h2>
+
+<blockquote>
+  <p><code class="highlighter-rouge">str.split()</code>可以将str转化为list。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># 采用"."作为分隔符</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">line</span><span class="o">=</span><span class="s">"hello. I am leisureg.welcome you."</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"."</span><span class="p">)</span>
+<span class="p">[</span><span class="s">'hello'</span><span class="p">,</span> <span class="s">' I am leisureg'</span><span class="p">,</span> <span class="s">'welcome you'</span><span class="p">,</span> <span class="s">''</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"."</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span>
+<span class="p">[</span><span class="s">'hello'</span><span class="p">,</span> <span class="s">' I am leisureg'</span><span class="p">,</span> <span class="s">'welcome you'</span><span class="p">,</span> <span class="s">''</span><span class="p">]</span>
+
+<span class="c"># 根据"."被作为分隔符的个数，来划分</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">"."</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span>
+<span class="p">[</span><span class="s">'hello'</span><span class="p">,</span> <span class="s">' I am leisureg.welcome you.'</span><span class="p">]</span>
+
+<span class="c"># 如果split()在不输入任何参数的情况下，见到任何分隔符号，就用其分割。</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="o">=</span><span class="s">"I am,writing</span><span class="se">\n</span><span class="s">python</span><span class="se">\t</span><span class="s">book on line"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span>
+<span class="s">'I am,writing</span><span class="se">\n</span><span class="s">python</span><span class="se">\t</span><span class="s">book on line'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">str</span>
+<span class="n">I</span> <span class="n">am</span><span class="p">,</span><span class="n">writing</span>
+<span class="n">python</span>  <span class="n">book</span> <span class="n">on</span> <span class="n">line</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">();</span>
+<span class="p">[</span><span class="s">'I'</span><span class="p">,</span> <span class="s">'am,writing'</span><span class="p">,</span> <span class="s">'python'</span><span class="p">,</span> <span class="s">'book'</span><span class="p">,</span> <span class="s">'on'</span><span class="p">,</span> <span class="s">'line'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p><code class="highlighter-rouge">"".join(list)</code>将str转化为list。</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="o">=</span><span class="p">[</span><span class="s">'hello'</span><span class="p">,</span><span class="s">'world'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span>
+<span class="p">[</span><span class="s">'hello'</span><span class="p">,</span> <span class="s">'world'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="s">'helloworld'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"."</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="s">'hello.world'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="s">'hello world'</span>
+</code></pre>
+</div>
+
+                </div>
+                <div class="read-all">
+                    <a  href="/2016/07/27/python-list-str/"><i class="fa fa-newspaper-o"></i>Read All</a>
+                </div>
+                <hr>
+              </li>
+            
+              <li>
+                <h2>
                   <a class="post-link" href="/2016/07/25/vmware-not-open/">Vmware虚拟机提示：锁定文件失败，打不开磁盘的解决方法</a>
                 </h2>
                 <div class="label">
@@ -230,8 +697,11 @@
                     </div>
                 </div>
                 <div class="excerpt">
-                    
-<p>##union的使用实例</p>
+                    <ul id="markdown-toc">
+  <li><a href="#union" id="markdown-toc-union">union的使用实例</a></li>
+</ul>
+
+<h2 id="union">union的使用实例</h2>
 
 <div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 </span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
@@ -285,6 +755,12 @@
                 </div>
                 <ul class="content-ul" recent>
                     
+                        <li><a href="/2016/07/29/python-str/">str集</a></li>
+                    
+                        <li><a href="/2016/07/29/python-for/">for循环的使用</a></li>
+                    
+                        <li><a href="/2016/07/27/python-list-str/">list与str</a></li>
+                    
                         <li><a href="/2016/07/25/vmware-not-open/">Vmware虚拟机提示：锁定文件失败，打不开磁盘的解决方法</a></li>
                     
                         <li><a href="/2016/07/25/c-union/">c语言union</a></li>
@@ -318,6 +794,15 @@
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="/category/#python" class="categories-list-item" cate="python">
+                            <span class="name">
+                                python
+                            </span>
+                            <span class="badge">3</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- 其他div框放到这里 -->
@@ -348,6 +833,27 @@
                       
                       
                       <a href="/tag/#Vmware" style="font-size: 9pt; color: #999;">Vmware</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#list" style="font-size: 9pt; color: #999;">list</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#str" style="font-size: 18pt; color: #000;">str</a>
+                    
+                      
+                      
+                      
+                      
+                      
+                      <a href="/tag/#for" style="font-size: 9pt; color: #999;">for</a>
                     
                 </div>
             </div>

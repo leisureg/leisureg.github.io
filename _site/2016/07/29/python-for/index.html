@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>c语言union</title>
-    <meta name="description" content="  union的使用实例union的使用实例#include &lt;stdio.h&gt;int main(int argc,char *argv[]){        union check        {                int i;                char ch;     ...">
+    <title>for循环的使用</title>
+    <meta name="description" content="  for循环的使用  range用法for循环的使用&gt;&gt;&gt; str="hello"&gt;&gt;&gt; for i in str:...     print i...hello# 如果要打印为一行，加个","(英文逗号)即可&gt;&gt;&gt; for i in str:...    ...">
 
     <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="icon" href="/favicon.ico?" type="image/x-icon">
     <link rel="stylesheet" href=" /css/fontawesome/css/font-awesome.min.css ">
     <link rel="stylesheet" href=" /css/main.css ">
-    <link rel="canonical" href="https:///2016/07/25/c-union/">
+    <link rel="canonical" href="https:///2016/07/29/python-for/">
     <link rel="alternate" type="application/rss+xml" title="leisureg的技术博客" href="https:// /feed.xml ">
 
 
@@ -93,11 +93,11 @@
 
         <div class="page clearfix" post>
     <div class="left">
-        <h1>c语言union</h1>
+        <h1>for循环的使用</h1>
         <div class="label">
 
             <div class="label-card">
-                <i class="fa fa-calendar"></i>2016-07-25
+                <i class="fa fa-calendar"></i>2016-07-29
             </div>
 
             <div class="label-card">
@@ -117,7 +117,7 @@
   <i class="fa fa-th-list"></i>
   
     
-        <a href="/category/#c" title="Category: c" rel="category">c</a>
+        <a href="/category/#python" title="Category: python" rel="category">python</a>
     
   
 
@@ -134,8 +134,8 @@
   <i class="fa fa-tags"></i>
   
     
-        <!--a href="/tag/#c%2Cunion%2C%E5%A4%A7%E7%AB%AF%E5%B0%8F%E7%AB%AF" title="Tag: c,union,大端小端" rel="tag">c,union,大端小端</a-->
-        <a href="/tag/#c,union,大端小端" title="Tag: c,union,大端小端" rel="tag">c,union,大端小端</a>
+        <!--a href="/tag/#for" title="Tag: for" rel="tag">for</a-->
+        <a href="/tag/#for" title="Tag: for" rel="tag">for</a>
     
   
 
@@ -147,26 +147,75 @@
         <hr>
         <article itemscope itemtype="http://schema.org/BlogPosting">
         <ul id="markdown-toc">
-  <li><a href="#union" id="markdown-toc-union">union的使用实例</a></li>
+  <li><a href="#for" id="markdown-toc-for">for循环的使用</a></li>
+  <li><a href="#range" id="markdown-toc-range">range用法</a></li>
 </ul>
 
-<h2 id="union">union的使用实例</h2>
+<h2 id="for">for循环的使用</h2>
 
-<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
-</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-        <span class="k">union</span> <span class="n">check</span>
-        <span class="p">{</span>
-                <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-                <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
-        <span class="p">}</span><span class="n">c</span><span class="p">;</span>
-        <span class="n">c</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="mh">0x0100</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span> <span class="o">==</span> <span class="mh">0x01</span><span class="p">)</span>
-                <span class="n">printf</span><span class="p">(</span><span class="s">"大端[%d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span><span class="p">);</span>
-        <span class="k">else</span>
-                <span class="n">printf</span><span class="p">(</span><span class="s">"小端[%d]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">c</span><span class="p">.</span><span class="n">ch</span><span class="p">);</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">str</span><span class="o">=</span><span class="s">"hello"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span>
+<span class="o">...</span>
+<span class="n">h</span>
+<span class="n">e</span>
+<span class="n">l</span>
+<span class="n">l</span>
+<span class="n">o</span>
+<span class="c"># 如果要打印为一行，加个","(英文逗号)即可</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+<span class="o">...</span>
+<span class="n">h</span> <span class="n">e</span> <span class="n">l</span> <span class="n">l</span> <span class="n">o</span>
+
+<span class="c"># 如果要使用","号分割，可以使用"+"来实现</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span><span class="o">+</span><span class="s">","</span><span class="p">,</span>
+<span class="o">...</span>
+<span class="n">h</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span>
+<span class="o">&gt;&gt;&gt;</span>
+
+<span class="c"># 通过下标来循环打印，range是用来设置下标序号的。这里"0-4"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">)):</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="nb">str</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+<span class="o">...</span>
+<span class="n">h</span> <span class="n">e</span> <span class="n">l</span> <span class="n">l</span> <span class="n">o</span>
+</code></pre>
+</div>
+
+<h2 id="range">range用法</h2>
+
+<blockquote>
+  <p><strong>原型：</strong>range(start,stop,step)，其中<strong>start</strong>和<strong>step</strong>是可以省略的，开始值默认为0。</p>
+
+  <p><strong>start：不存在时，默认为0。所以，range(i,j,1) = range(i,j)</strong></p>
+
+  <p><strong>step：不存在时，默认为1，并且</strong>必须<strong>大于0</strong></p>
+</blockquote>
+
+<blockquote>
+  <p>1、range(i,j)，带有开始和结束，表示，range(i,j)=[i,i+1,i+2,i+3,…,j-1]
+<code class="highlighter-rouge">python
+&gt;&gt; print range(1,5)
+[1, 2, 3, 4]
+</code>
+2、range(j)，如果range只有一个参数，表示结束值，如：range(j)=[0,1,2,j-1]</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>3、range(i,j,2)，表示，range(i,j,2)=[i+2,(i+2)+2,(i+2+2)+2,…]</p>
+
+</blockquote>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 </code></pre>
 </div>
 
@@ -188,12 +237,12 @@
                     
                 
             
-        
-            
-            
                 
                     
                 
+            
+        
+            
             
                 
                     
@@ -211,11 +260,15 @@
 
         <div class="post-recent">
     
+    <div class="pre">
+
+        <p><strong>上一篇</strong> <a href="/2016/07/27/python-list-str/">list与str</a></p>
+        
     </div>
     <div class="nex">
 
         
-        <p><strong>下一篇</strong> <a href="/2016/07/25/vmware-not-open/">Vmware虚拟机提示：锁定文件失败，打不开磁盘的解决方法</a></p>
+        <p><strong>下一篇</strong> <a href="/2016/07/29/python-str/">str集</a></p>
         
     </div>
 </div>
